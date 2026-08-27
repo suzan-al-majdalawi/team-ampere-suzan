@@ -1,3 +1,7 @@
-## vad jag gjort?
+## Daily standup - Namn - Date
 
-## vad som var svårt?
+## Vad har jag gjort sen senast :
+
+## Vad ska du göra idag :
+
+## Några hinder : vad som var svårt?
