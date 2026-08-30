@@ -11,7 +11,7 @@
       </div>
       <div class="card stat">
         <div class="stat-label">Aktuellt pris</div>
-        <div class="stat-value">{{ currentPrice }} kr/kWh</div>
+        <div class="stat-value">{{ currentPrice }}</div>
       </div>
       <div class="card stat">
         <div class="stat-label">Avtal</div>
@@ -44,6 +44,7 @@ import { computed, onMounted, onBeforeUnmount } from 'vue'
 import { useUserStore } from '../stores/user'
 import { useConsumptionStore } from '../stores/consumption'
 import ConsumptionChart from '../components/ConsumptionChart.vue'
+import { formatPrice } from '../utils/price.js'
 
 const userStore = useUserStore()
 const consumptionStore = useConsumptionStore()
@@ -54,7 +55,7 @@ const latestMonth = computed(() => {
 })
 
 const currentPrice = computed(() =>
-  consumptionStore.data ? consumptionStore.data.pricePerKwh : '–'
+  formatPrice(consumptionStore.data?.pricePerKwh)
 )
 
 // debounce on resize, chart.js redraws itself but we log a bit /J
