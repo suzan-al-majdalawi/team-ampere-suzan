@@ -8,5 +8,7 @@ Customer portal for Kraftly. Delivered by Webbmakarna AB 2026-06-30.
     npm start
 
 TODO: write proper documentation
+
 # kraftly-mina-sidor
+
 # kraftly-demo
