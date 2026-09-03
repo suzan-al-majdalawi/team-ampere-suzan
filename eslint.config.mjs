@@ -4,8 +4,6 @@ export default [
   {
     ignores: ["node_modules/**", "dist/**", "testresultat/**", "mock-api/**"],
   },
-
-  // Vanliga JS-filer
   {
     files: ["**/*.js", "**/*.mjs", "**/*.cjs"],
     languageOptions: {
@@ -19,7 +17,6 @@ export default [
       "no-console": "off",
     },
   },
-
 
   // Cypress
   {
