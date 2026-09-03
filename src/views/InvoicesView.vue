@@ -16,10 +16,7 @@
         </thead>
 
         <tbody>
-          <tr
-            v-for="invoice in invoices"
-            :key="invoice.id"
-          >
+          <tr v-for="invoice in invoices" :key="invoice.id">
             <td>{{ invoice.id }}</td>
             <td>{{ invoice.period }}</td>
             <td>{{ invoice.amount }} kr</td>
@@ -31,7 +28,7 @@
                   'status-chip',
                   invoice.status === 'Betald'
                     ? 'status-betald'
-                    : 'status-obetald'
+                    : 'status-obetald',
                 ]"
               >
                 {{ invoice.status }}
@@ -39,10 +36,7 @@
             </td>
 
             <td>
-              <div
-                class="download"
-                @click="downloadInvoice(invoice)"
-              >
+              <div class="download" @click="downloadInvoice(invoice)">
                 Ladda ner
               </div>
             </td>
@@ -54,19 +48,19 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
-import { fetchInvoices } from '../services/api'
+import { ref, onMounted } from "vue";
+import { fetchInvoices } from "../services/api";
 
-const invoices = ref([])
+const invoices = ref([]);
 
 onMounted(async () => {
-  invoices.value = await fetchInvoices()
-})
+  invoices.value = await fetchInvoices();
+});
 
 const downloadInvoice = (invoice) => {
-  console.log('download', invoice.id)
-  alert('Nedladdning kommer snart')
-}
+  console.log("download", invoice.id);
+  alert("Nedladdning kommer snart");
+};
 </script>
 
 <style scoped>
