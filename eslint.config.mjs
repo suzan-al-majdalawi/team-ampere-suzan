@@ -17,4 +17,29 @@ export default [
       "no-console": "off",
     },
   },
+
+  // Cypress
+  {
+    files: ["cypress/**/*.cy.js"],
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+
+        // Cypress
+        cy: "readonly",
+        Cypress: "readonly",
+
+        // Mocha / Cypress test functions
+        describe: "readonly",
+        it: "readonly",
+        beforeEach: "readonly",
+        afterEach: "readonly",
+        before: "readonly",
+        after: "readonly",
+      },
+    },
+    rules: {
+      "no-undef": "error",
+    },
+  },
 ];

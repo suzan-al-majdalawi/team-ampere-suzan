@@ -125,3 +125,16 @@ npx vitest run src/views/ProfileView.spec.js
 ![alt text](image-16.png)
 npm install -D jsdom
 ![alt text](image-17.png)
+
+## install cypress
+
+npx cypress open
+npx cypress run
+
+![alt text](image-18.png)
+![alt text](image-19.png)
+
+# Nu grön i 3 tester efter run
+
+npm run test:run
+![alt text](image-20.png)
