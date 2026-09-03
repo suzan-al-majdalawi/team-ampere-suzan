@@ -1,4 +1,5 @@
 # Test 1 : Testet – rött, sen grönt
+
 ![alt text](image.png)
 ![alt text](image-1.png)
 ![alt text](image-2.png)
@@ -6,7 +7,8 @@
 ![alt text](image-3.png)
 ![alt text](image-4.png)
 
-## finns problem efter byta i views/boardview  
+## finns problem efter byta i views/boardview
+
 ´´´
 6 · Koppla in i vyn
 I DashboardView.vue:
@@ -14,7 +16,7 @@ I DashboardView.vue:
 import { formatPrice } from '../utils/price'
 
 const currentPrice = computed(() => formatPrice(consumptionStore.data?.pricePerKwh))
-Ta bort  kr/kWh ur templaten (rad 14) – enheten ligger nu i funktionen:
+Ta bort kr/kWh ur templaten (rad 14) – enheten ligger nu i funktionen:
 
 <div class="stat-value">{{ currentPrice }}</div>
 Ladda om webbläsaren: 1,42 kr/kWh.
@@ -23,7 +25,7 @@ Om tiden räcker · TDD-smakprov
 Testet först:
 
 it('visar platshållare när priset saknas', () => {
-  expect(formatPrice(undefined)).toBe('–')
+expect(formatPrice(undefined)).toBe('–')
 })
 Verifierat rött: TypeError: Cannot read properties of undefined (reading 'toFixed')
 

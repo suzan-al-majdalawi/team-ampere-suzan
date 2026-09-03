@@ -14,10 +14,10 @@ Logga in med vad som helst i formuläret (fejk-login, precis som teamens kod).
 
 ## Brancher
 
-| Branch | Läge |
-|---|---|
+| Branch       | Läge                                                                                 |
+| ------------ | ------------------------------------------------------------------------------------ |
 | `demo-start` | **Börja här.** Före demon: ingen `src/utils/`, inget testskript, orörd DashboardView |
-| `demo-facit` | Efter demon: allt klart – jämför med `git diff demo-start demo-facit` |
+| `demo-facit` | Efter demon: allt klart – jämför med `git diff demo-start demo-facit`                |
 
 ```bash
 git checkout demo-start    # återställ inför passet
@@ -32,8 +32,8 @@ git checkout .             # nollställ mitt i demon om något spårar ur
 
 ```js
 const currentPrice = computed(() =>
-  consumptionStore.data ? consumptionStore.data.pricePerKwh : '–'
-)
+  consumptionStore.data ? consumptionStore.data.pricePerKwh : "–",
+);
 ```
 
 Logiken bor i komponenten → måste rendera hela vyn för att testa den. Dessutom visas värdet rått: `1.42` med punkt.
@@ -57,8 +57,8 @@ Ny fil `src/utils/price.js` — **lämna punkten kvar med flit**:
 ```js
 /** 1.42 -> "1,42 kr/kWh" */
 export const formatPrice = (price) => {
-  return `${price.toFixed(2)} kr/kWh`
-}
+  return `${price.toFixed(2)} kr/kWh`;
+};
 ```
 
 ### 4 · Testet – rött, sen grönt
@@ -66,13 +66,13 @@ export const formatPrice = (price) => {
 Ny fil `src/utils/price.test.js`:
 
 ```js
-import { it, expect } from 'vitest'
-import { formatPrice } from './price'
+import { it, expect } from "vitest";
+import { formatPrice } from "./price";
 
-it('använder svenskt decimalkomma', () => {
-  const result = formatPrice(1.42) // act
-  expect(result).toBe('1,42 kr/kWh') // assert
-})
+it("använder svenskt decimalkomma", () => {
+  const result = formatPrice(1.42); // act
+  expect(result).toBe("1,42 kr/kWh"); // assert
+});
 ```
 
 ```bash
@@ -94,7 +94,7 @@ Received: "1.42 kr/kWh"
 Läs felet högt: exakt fil, exakt rad, förväntat vs faktiskt. Fixa sedan:
 
 ```js
-return `${price.toFixed(2).replace('.', ',')} kr/kWh`
+return `${price.toFixed(2).replace(".", ",")} kr/kWh`;
 ```
 
 → watch-läget slår om till grönt av sig självt.
@@ -114,9 +114,11 @@ AssertionError: expected '1,4 kr/kWh' to be '1,42 kr/kWh'
 I `DashboardView.vue`:
 
 ```js
-import { formatPrice } from '../utils/price'
+import { formatPrice } from "../utils/price";
 
-const currentPrice = computed(() => formatPrice(consumptionStore.data?.pricePerKwh))
+const currentPrice = computed(() =>
+  formatPrice(consumptionStore.data?.pricePerKwh),
+);
 ```
 
 Ta bort ` kr/kWh` ur templaten (rad 14) – enheten ligger nu i funktionen:
@@ -132,9 +134,9 @@ Ladda om webbläsaren: **1,42 kr/kWh**.
 Testet först:
 
 ```js
-it('visar platshållare när priset saknas', () => {
-  expect(formatPrice(undefined)).toBe('–')
-})
+it("visar platshållare när priset saknas", () => {
+  expect(formatPrice(undefined)).toBe("–");
+});
 ```
 
 **Verifierat rött:** `TypeError: Cannot read properties of undefined (reading 'toFixed')`
@@ -142,7 +144,7 @@ it('visar platshållare när priset saknas', () => {
 Sedan koden:
 
 ```js
-if (typeof price !== 'number' || Number.isNaN(price)) return '–'
+if (typeof price !== "number" || Number.isNaN(price)) return "–";
 ```
 
 → 2 passed. Koppla till `user.name.split()`-kraschen ur deras skuldinventering: samma sorts bugg, nu fångad av ett test.
