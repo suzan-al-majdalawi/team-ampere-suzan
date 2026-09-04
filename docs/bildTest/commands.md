@@ -138,3 +138,13 @@ npx cypress run
 
 npm run test:run
 ![alt text](image-20.png)
+
+# kör
+
+npx playwright test e2e/LoginView.spec.js --headed
+annan terminal : npm run api
+annan terminal : npm run dev
+
+# passed
+
+![alt text](image-21.png)
