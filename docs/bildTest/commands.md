@@ -148,3 +148,7 @@ annan terminal : npm run dev
 # passed
 
 ![alt text](image-21.png)
+
+# Efter git pull i main fick Fail
+
+![alt text](image-22.png)
